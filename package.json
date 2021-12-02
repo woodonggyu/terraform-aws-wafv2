@@ -1,0 +1,21 @@
+{
+  "name": "repo-template",
+  "version": "1.0.0",
+  "description": "repo-template",
+  "scripts": {
+    "overrideChangelog": "gren changelog --override"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woodonggyu/repo-template.git"
+  },
+  "author": "woodonggyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woodonggyu/repo-template/issues"
+  },
+  "homepage": "https://github.com/woodonggyu/repo-template#readme",
+  "dependencies": {
+    "github-release-notes": "^0.17.3"
+  }
+}

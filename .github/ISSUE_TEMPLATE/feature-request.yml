@@ -1,0 +1,13 @@
+name: Feature request
+description: Standard feature request template
+assignees:
+  - woodonggyu
+labels: ["type: bug"]
+body:
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      placeholder: input your email
+    validations:
+      required: false

@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: monthly
+    target-branch: "main"
+    reviewers:
+      - "woodonggyu"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: daily
+    target-branch: "main"
+    reviewers:
+      - "woodonggyu"
+    labels:
+      - "dependencies"

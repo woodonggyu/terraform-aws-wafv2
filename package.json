@@ -1,21 +1,22 @@
 {
-  "name": "repo-template",
-  "version": "1.0.0",
-  "description": "repo-template",
+  "name": "terraform-aws-wafv2",
+  "version": "0.1.0",
+  "description": "terraform-aws-wafv2",
   "scripts": {
     "overrideChangelog": "gren changelog --override"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/woodonggyu/repo-template.git"
+    "url": "git+https://github.com/woodonggyu/terraform-aws-wafv2.git"
   },
   "author": "woodonggyu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/woodonggyu/repo-template/issues"
+    "url": "https://github.com/woodonggyu/terraform-aws-wafv2/issues"
   },
-  "homepage": "https://github.com/woodonggyu/repo-template#readme",
+  "homepage": "https://github.com/woodonggyu/terraform-aws-wafv2#readme",
   "dependencies": {
-    "github-release-notes": "^0.17.3"
+    "github-release-notes": "^0.17.3",
+    "npm-check-updates": "^12.0.2"
   }
 }

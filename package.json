@@ -1,6 +1,6 @@
 {
   "name": "terraform-aws-wafv2",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "terraform-aws-wafv2",
   "scripts": {
     "overrideChangelog": "gren changelog --override"

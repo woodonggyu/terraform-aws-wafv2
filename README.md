@@ -1,32 +1,65 @@
-# repo-template
+# terraform-aws-wafv2
 
-The set template is as follows. (**Can be customized**)
+Terraform module which creates Web Application Firewall (WAFV2).
 
-* Applied .gitignore
-* .gitignore file brings from .gitignore.io (default. "Python", "PyCharm+all", "macOS", "Linux", "Windows", "Terraform", "Node").
-* Applied template of issue, label, pull request
-* Release automation (using. release-drafter)
-* Generates Release Notes (using. github-release-notes)
-* Applied pre-commit hook (flake8)
-* Applied Dependabot security updates (testing)
+Available features
+
+- ManagedRuleGroupStatement
 
 
+## Examples
 
-## labels.json
-* At First, [Create Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-* For label synchronization, you need to install the `github-label-sync` module.
+## Requirements
 
-```
-# sudo npm install -g github-label-sync
-```
+| Name | Version |
+|------|---------|
+| terraform | \>= 1.0.8 |
+| aws | \>= 3.60.0 |
 
-* Label Synchronization
-```
-# sudo github-label-sync --access-token [액세스 토큰] --labels labels.json [계정명]/[저장소 이름]
-```
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | \>= 3.60.0 |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_wafv2_web_acl.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| region | The Region of the AWS. | `string` | `ap-northeast-2` | no |
+| name | A friendly name of the WebACL. | `string` | `""` | yes |
+| description | A friendly description of the WebACL. | `string` | `null` | no |
+| scope | Specifies whether this is for an AWS CloudFront distribution or for a regional application. | `string` | `""` | yes |
+| default_action | The action to perform when a web request doesn't match any of the rules in the WebACL. | `string` | `allow` | no
+| visibility_config | Defines and enables Amazon CloudWatch metrics and web request sample collection. | `object(...)` | <pre> { <br>   cloudwatch_metrics_enabled = false <br>   metric_name = "cloudwatch_wafv2_metrics" <br>   sampled_requests_enabled = false <br> } </pre> | no |  
+| rule | The processing guidance for a Rule, used by AWS WAF to determine whether a web request matches the rule. | `list(object(...))` | `[]` | yes 
+| tags | A tag associated with an AWS resource. | `map(string)` | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
 
 
-## Install pre-commit
-```
-# pre-commit install
-```
+
+## Dependencies
+
+This module does not have any dependencies to other modules.
+
+## Authors
+
+Module is maintained by Donggyu Woo
+
+## License
+
+MIT Licensed. See [LICENSE](https://github.com/woodonggyu/terraform-aws-wafv2/blob/main/LICENSE) for full details.

@@ -1585,6 +1585,13 @@ resource "aws_wafv2_web_acl" "this" {
             arn = lookup(ip_set_reference_statement.value, "arn")
           }
         }
+
+        dynamic "geo_match_statement" {
+          for_each = lookup(rule.value, "geo_match_statement", null) == null ? [] : [lookup(rule.value, "geo_match_statement")]
+          content {
+            country_codes = lookup(geo_match_statement.value, "country_codes")
+          }
+        }
       }
 
       dynamic "visibility_config" {

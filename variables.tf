@@ -151,6 +151,9 @@ variable "rules" {
     ip_set_reference_statement   = optional(object({
       arn = string
     }))
+    geo_match_statement          = optional(object({
+      country_codes = list(string)
+    }))
     visibility_config = object({
       cloudwatch_metrics_enabled = bool
       metric_name                = string

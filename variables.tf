@@ -41,7 +41,8 @@ variable "rules" {
   type = list(object({
     name            = string
     priority        = number
-    override_action = optional(any)
+    action          = optional(string)
+    override_action = optional(string)
     managed_rule_group_statement = optional(object({
       name          = string
       vendor_name   = string
@@ -146,6 +147,9 @@ variable "rules" {
           })
         }))
       }))
+    }))
+    ip_set_reference_statement   = optional(object({
+      arn = string
     }))
     visibility_config = object({
       cloudwatch_metrics_enabled = bool

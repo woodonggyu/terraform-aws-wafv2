@@ -21,6 +21,26 @@ resource "aws_wafv2_web_acl" "this" {
       name     = lookup(rule.value, "name")
       priority = lookup(rule.value, "priority")
 
+      dynamic "action" {
+        for_each = lookup(rule.value, "action", null) == null ? [] : [lookup(rule.value, "action")]
+        content {
+          dynamic "allow" {
+            for_each = action.value == "allow" ? [1] : []
+            content {}
+          }
+
+          dynamic "block" {
+            for_each = action.value == "block" ? [1] : []
+            content {}
+          }
+
+          dynamic "count" {
+            for_each = action.value == "count" ? [1] : []
+            content {}
+          }
+        }
+      }
+
       dynamic "override_action" {
         for_each = lookup(rule.value, "override_action", null) == null ? [] : [1]
         content {
@@ -1556,6 +1576,13 @@ resource "aws_wafv2_web_acl" "this" {
                 }
               }
             }
+          }
+        }
+
+        dynamic "ip_set_reference_statement" {
+          for_each = lookup(rule.value, "ip_set_reference_statement", null) == null ? [] : [lookup(rule.value, "ip_set_reference_statement")]
+          content {
+            arn = lookup(ip_set_reference_statement.value, "arn")
           }
         }
       }

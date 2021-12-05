@@ -1592,6 +1592,22 @@ resource "aws_wafv2_web_acl" "this" {
             country_codes = lookup(geo_match_statement.value, "country_codes")
           }
         }
+
+        dynamic "rate_based_statement" {
+          for_each = lookup(rule.value, "rate_based_statement", null) == null ? [] : [lookup(rule.value, "rate_based_statement")]
+          content {
+            limit               = lookup(rate_based_statement.value, "limit")
+            aggregate_key_type  = lookup(rate_based_statement.value, "aggregate_key_type")
+
+            dynamic "forwarded_ip_config" {
+              for_each = lookup(rate_based_statement.value, "forwarded_ip_config", null) == null ? [] : [lookup(rate_based_statement.value, "forwarded_ip_config")]
+              content {
+                fallback_behavior = lookup(forwarded_ip_config.value, "fallback_behavior")
+                header_name       = lookup(forwarded_ip_config.value, "header_name")
+              }
+            }
+          }
+        }
       }
 
       dynamic "visibility_config" {

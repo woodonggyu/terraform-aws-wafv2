@@ -5,7 +5,9 @@ Terraform module which creates Web Application Firewall (WAFV2).
 Available features
 
 - ManagedRuleGroupStatement
-
+- IPSetReferenceStatement
+- GeoMatchStatement
+- RateBasedStatement
 
 ## Examples
 
@@ -49,7 +51,6 @@ No Modules.
 
 | Name | Description |
 |------|-------------|
-
 
 
 ## Dependencies

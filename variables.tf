@@ -148,11 +148,19 @@ variable "rules" {
         }))
       }))
     }))
-    ip_set_reference_statement   = optional(object({
+    ip_set_reference_statement    = optional(object({
       arn = string
     }))
-    geo_match_statement          = optional(object({
+    geo_match_statement           = optional(object({
       country_codes = list(string)
+    }))
+    rate_based_statement          = optional(object({
+      limit                 = number
+      aggregate_key_type    = string
+      forwarded_ip_config   = optional(object({
+        fallback_behavior = string
+        header_name       = string
+      }))
     }))
     visibility_config = object({
       cloudwatch_metrics_enabled = bool

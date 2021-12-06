@@ -1608,6 +1608,62 @@ resource "aws_wafv2_web_acl" "this" {
             }
           }
         }
+
+        dynamic "size_constraint_statement" {
+          for_each = lookup(rule.value, "size_constraint_statement", null) == null ? [] : [lookup(rule.value, "size_constraint_statement")]
+          content {
+            dynamic "field_to_match" {
+              for_each = [lookup(size_constraint_statement.value, "field_to_match")]
+              content {
+                dynamic "all_query_arguments" {
+                  for_each = lookup(field_to_match.value, "all_query_arguments", null) == null ? [] : [lookup(field_to_match.value, "all_query_arguments")]
+                  content {}
+                }
+
+                dynamic "body" {
+                  for_each = lookup(field_to_match.value, "body", null) == null ? [] : [lookup(field_to_match.value, "body")]
+                  content {}
+                }
+
+                dynamic "method" {
+                  for_each = lookup(field_to_match.value, "method", null) == null ? [] : [lookup(field_to_match.value, "method")]
+                  content {}
+                }
+
+                dynamic "query_string" {
+                  for_each = lookup(field_to_match.value, "query_string", null) == null ? [] : [lookup(field_to_match.value, "query_string")]
+                  content {}
+                }
+
+                dynamic "single_header" {
+                  for_each = lookup(field_to_match.value, "single_header", null) == null ? [] : [lookup(field_to_match.value, "single_header")]
+                  content {
+                    name = lookup(single_header.value, "name")
+                  }
+                }
+
+                dynamic "single_query_argument" {
+                  for_each = lookup(field_to_match.value, "single_query_argument", null) == null ? [] : [lookup(field_to_match.value, "single_query_argument")]
+                  content {
+                    name = lookup(single_query_argument.value, "name")
+                  }
+                }
+
+                dynamic "uri_path" {
+                  for_each = lookup(field_to_match.value, "uri_path", null) == null ? [] : [lookup(field_to_match.value, "uri_path")]
+                  content {}
+                }
+              }
+            }
+
+            comparison_operator = lookup(size_constraint_statement.value, "comparison_operator")
+            size                = lookup(size_constraint_statement.value, "size")
+            text_transformation {
+              priority = lookup(size_constraint_statement.value["text_transformation"], "priority")
+              type     = lookup(size_constraint_statement.value["text_transformation"], "type")
+            }
+          }
+        }
       }
 
       dynamic "visibility_config" {

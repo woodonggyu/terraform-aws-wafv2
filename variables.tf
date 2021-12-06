@@ -162,6 +162,27 @@ variable "rules" {
         header_name       = string
       }))
     }))
+    size_constraint_statement     = optional(object({
+      field_to_match = object({
+        all_query_arguments = optional(map(any))
+        body                = optional(map(any))
+        method              = optional(map(any))
+        query_string        = optional(map(any))
+        single_header = optional(object({
+          name = string
+        }))
+        single_query_argument = optional(object({
+          name = string
+        }))
+        uri_path = optional(map(any))
+      })
+      comparison_operator = string
+      size                = number
+      text_transformation = object({
+        priority = number
+        type     = string
+      })
+    }))
     visibility_config = object({
       cloudwatch_metrics_enabled = bool
       metric_name                = string

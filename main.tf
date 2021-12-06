@@ -1664,6 +1664,59 @@ resource "aws_wafv2_web_acl" "this" {
             }
           }
         }
+
+        dynamic "sqli_match_statement" {
+          for_each = lookup(rule.value, "sqli_match_statement", null) == null ? [] : [lookup(rule.value, "sqli_match_statement")]
+          content {
+            dynamic "field_to_match" {
+              for_each = [lookup(sqli_match_statement.value, "field_to_match")]
+              content {
+                dynamic "all_query_arguments" {
+                  for_each = lookup(field_to_match.value, "all_query_arguments", null) == null ? [] : [lookup(field_to_match.value, "all_query_arguments")]
+                  content {}
+                }
+
+                dynamic "body" {
+                  for_each = lookup(field_to_match.value, "body", null) == null ? [] : [lookup(field_to_match.value, "body")]
+                  content {}
+                }
+
+                dynamic "method" {
+                  for_each = lookup(field_to_match.value, "method", null) == null ? [] : [lookup(field_to_match.value, "method")]
+                  content {}
+                }
+
+                dynamic "query_string" {
+                  for_each = lookup(field_to_match.value, "query_string", null) == null ? [] : [lookup(field_to_match.value, "query_string")]
+                  content {}
+                }
+
+                dynamic "single_header" {
+                  for_each = lookup(field_to_match.value, "single_header", null) == null ? [] : [lookup(field_to_match.value, "single_header")]
+                  content {
+                    name = lookup(single_header.value, "name")
+                  }
+                }
+
+                dynamic "single_query_argument" {
+                  for_each = lookup(field_to_match.value, "single_query_argument", null) == null ? [] : [lookup(field_to_match.value, "single_query_argument")]
+                  content {
+                    name = lookup(single_query_argument.value, "name")
+                  }
+                }
+
+                dynamic "uri_path" {
+                  for_each = lookup(field_to_match.value, "uri_path", null) == null ? [] : [lookup(field_to_match.value, "uri_path")]
+                  content {}
+                }
+              }
+            }
+            text_transformation {
+              priority = lookup(sqli_match_statement.value["text_transformation"], "priority")
+              type     = lookup(sqli_match_statement.value["text_transformation"], "type")
+            }
+          }
+        }
       }
 
       dynamic "visibility_config" {

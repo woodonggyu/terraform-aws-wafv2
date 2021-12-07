@@ -8,6 +8,12 @@ Available features
 - IPSetReferenceStatement
 - GeoMatchStatement
 - RateBasedStatement
+- SizeConstraintStatement
+- SqliMatchStatement
+- XssMatchStatement
+- AndStatement
+- OrStatement
+- NotStatement
 
 ## Examples
 

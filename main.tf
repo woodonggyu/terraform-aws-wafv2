@@ -7,12 +7,12 @@ resource "aws_wafv2_web_acl" "this" {
 
   default_action {
     dynamic "allow" {
-      for_each = var.default_action == "allow" ? [1] : []
+      for_each = lower(var.default_action) == "allow" ? [1] : []
       content {}
     }
 
     dynamic "block" {
-      for_each = var.default_action == "block" ? [1] : []
+      for_each = lower(var.default_action) == "block" ? [1] : []
       content {}
     }
   }
@@ -27,17 +27,17 @@ resource "aws_wafv2_web_acl" "this" {
         for_each = lookup(rule.value, "action", null) == null ? [] : [lookup(rule.value, "action")]
         content {
           dynamic "allow" {
-            for_each = action.value == "allow" ? [1] : []
+            for_each = lower(action.value) == "allow" ? [1] : []
             content {}
           }
 
           dynamic "block" {
-            for_each = action.value == "block" ? [1] : []
+            for_each = lower(action.value) == "block" ? [1] : []
             content {}
           }
 
           dynamic "count" {
-            for_each = action.value == "count" ? [1] : []
+            for_each = lower(action.value) == "count" ? [1] : []
             content {}
           }
         }
@@ -47,12 +47,12 @@ resource "aws_wafv2_web_acl" "this" {
         for_each = lookup(rule.value, "override_action", null) == null ? [] : [1]
         content {
           dynamic "none" {
-            for_each = lookup(rule.value, "override_action", null) == "None" ? [1] : []
+            for_each = lower(lookup(rule.value, "override_action", null)) == "none" ? [1] : []
             content {}
           }
 
           dynamic "count" {
-            for_each = lookup(rule.value, "override_action", null) == "Count" ? [1] : []
+            for_each = lower(lookup(rule.value, "override_action", null)) == "count" ? [1] : []
             content {}
           }
         }

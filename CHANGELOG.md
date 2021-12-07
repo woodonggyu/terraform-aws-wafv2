@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.1 🌈 (07/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#18)
+
+## 🚀 Features
+
+- refactor: Add var.region in variables.tf @woodonggyu (#23)
+- feat: Add WebACL Logical Rule Statement @woodonggyu (#21)
+
+---
+
 ## v1.1.0 🌈 (06/12/2021)
 ## Changes
 

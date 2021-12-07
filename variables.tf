@@ -1,3 +1,9 @@
+variable "region" {
+  type        = string
+  description = "The Region of the AWS."
+  default     = "ap-northeast-2"
+}
+
 variable "name" {
   type        = string
   description = "A friendly name of the WebACL."

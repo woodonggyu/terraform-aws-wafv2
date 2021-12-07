@@ -1,3 +1,5 @@
+provider "aws" { region = var.region }
+
 resource "aws_wafv2_web_acl" "this" {
   name        = var.name
   description = var.description

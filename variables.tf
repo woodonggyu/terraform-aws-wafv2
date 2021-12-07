@@ -221,6 +221,9 @@ variable "rules" {
         type     = string
       })
     }))
+    and_statement = optional(any)
+    or_statement  = optional(any)
+    not_statement = optional(any)
     visibility_config = object({
       cloudwatch_metrics_enabled = bool
       metric_name                = string
@@ -228,7 +231,32 @@ variable "rules" {
     })
   }))
   description = "The processing guidance for a Rule, used by AWS WAF to determine whether a web request matches the rule."
-  default = []
+  default = [
+    {
+      name                  = "WebACL01"
+      priority              = 10
+      action                = "count"
+      and_statement         = {
+        statements = [
+          {
+            geo_match_statement = {
+              country_codes = ["AF"]
+            }
+          },
+          {
+            ip_set_reference_statement = {
+              arn = "arn:aws:wafv2:ap-northeast-2:362252864672:regional/ipset/malware/a3138dc0-d7f8-448e-b6d7-8aa39a75a20e"
+            }
+          }
+        ]
+      }
+      visibility_config = {
+        cloudwatch_metrics_enabled = false
+        metric_name                = "cloudwatch-webacl-metrics"
+        sampled_requests_enabled   = false
+      }
+    }
+  ]
 }
 
 variable "tags" {

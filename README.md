@@ -50,7 +50,7 @@ No Modules.
 | scope | Specifies whether this is for an AWS CloudFront distribution or for a regional application. | `string` | `""` | yes |
 | default_action | The action to perform when a web request doesn't match any of the rules in the WebACL. | `string` | `allow` | no
 | visibility_config | Defines and enables Amazon CloudWatch metrics and web request sample collection. | `object(...)` | <pre> { <br>   cloudwatch_metrics_enabled = false <br>   metric_name = "cloudwatch_wafv2_metrics" <br>   sampled_requests_enabled = false <br> } </pre> | no |  
-| rule | The processing guidance for a Rule, used by AWS WAF to determine whether a web request matches the rule. | `list(object(...))` | `[]` | yes 
+| rules | The processing guidance for a Rule, used by AWS WAF to determine whether a web request matches the rule. | `any` | `[]` | yes 
 | tags | A tag associated with an AWS resource. | `map(string)` | `{}` | no |
 
 ## Outputs

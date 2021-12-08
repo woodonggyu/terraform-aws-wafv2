@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.1.2 🌈 (08/12/2021)
+## Changes
+
+- refactor: Change type of 'rules' variable @woodonggyu (#28)
+- refactor: Converts all cased letters to lowercase @woodonggyu (#26)
+- Update CHANGELOG.md @github-actions (#24)
+
+## 📝 Documentation
+
+- docs: Add example codes @woodonggyu (#29)
+
+---
+
 ## v1.1.1 🌈 (07/12/2021)
 ## Changes
 

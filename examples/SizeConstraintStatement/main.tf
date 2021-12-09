@@ -43,6 +43,9 @@ module "wafv2" {
     "Owner": "Donggyu Woo"
   }
 
+  enable_logging_configuration  = false
+  log_destination_configs       = []
+
   enable_webacl_association = false
   alb_resource_arn          = []
 }

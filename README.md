@@ -4,16 +4,9 @@ Terraform module which creates Web Application Firewall (WAFV2).
 
 Available features
 
-- ManagedRuleGroupStatement
-- IPSetReferenceStatement
-- GeoMatchStatement
-- RateBasedStatement
-- SizeConstraintStatement
-- SqliMatchStatement
-- XssMatchStatement
-- AndStatement
-- OrStatement
-- NotStatement
+- Support AWS managed rule groups
+- Support various rule statement (IP Sets, Geo Match, Byte Match, Rate Based, Size Constraint, Logical Statements)
+- Associate WAFv2 WebACL with AWS resources (API Gateway, ALB, AWS AppSync)
 
 ## Examples
 
@@ -41,7 +34,7 @@ No Modules.
 | Name | Type |
 |------|------|
 | [aws_wafv2_web_acl.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl) | resource |
-
+| [aws_wafv2_web_acl_association.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_web_acl_association) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -54,6 +47,8 @@ No Modules.
 | visibility_config | Defines and enables Amazon CloudWatch metrics and web request sample collection. | `object(...)` | <pre> { <br>   cloudwatch_metrics_enabled = false <br>   metric_name = "cloudwatch_wafv2_metrics" <br>   sampled_requests_enabled = false <br> } </pre> | no |  
 | rules | The processing guidance for a Rule, used by AWS WAF to determine whether a web request matches the rule. | `any` | `[]` | yes 
 | tags | A tag associated with an AWS resource. | `map(string)` | `{}` | no |
+| enable_webacl_association | Whether to associate ALB with WAFv2 WebACL. | `bool` | `false` | no |
+| alb_resource_arn | The Amazon Resource Name (ARN) of the resource to associate with the web ACL. | `list(string)` | `[]` | `no` |
 
 ## Outputs
 

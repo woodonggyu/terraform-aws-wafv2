@@ -70,8 +70,42 @@ module "wafv2" {
     "Owner": "Donggyu Woo"
   }
 
-  enable_logging_configuration  = false
+  enable_logging_configuration  = true
   log_destination_configs       = []
+
+  redacted_fields = {
+    single_header = {
+      name = "user-agent"
+    }
+  }
+
+  logging_filter = {
+    default_behavior = "KEEP"
+    filter = [
+      {
+        behavior    = "KEEP"
+        requirement = "MEETS_ANY"
+        condition   = [
+          {
+            action_condition = {
+              action = "ALLOW"
+            }
+          }
+        ]
+      },
+      {
+        behavior    = "DROP"
+        requirement = "MEETS_ALL"
+        condition   = [
+          {
+            action_condition = {
+              action = "COUNT"
+            }
+          }
+        ]
+      }
+    ]
+  }
 
   enable_webacl_association     = false
   alb_resource_arn              = []

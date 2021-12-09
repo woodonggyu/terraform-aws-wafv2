@@ -37,4 +37,7 @@ module "wafv2" {
     "Team": "Security Engineering"
     "Owner": "Donggyu Woo"
   }
+
+  enable_webacl_association = false
+  alb_resource_arn          = []
 }

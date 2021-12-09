@@ -24,7 +24,7 @@ module "wafv2" {
             statements = [
               {
                 ip_set_reference_statement = {
-                  arn = ""
+                  arn = "arn:aws:wafv2:ap-northeast-2:362252864672:regional/ipset/malware/a3138dc0-d7f8-448e-b6d7-8aa39a75a20e"
                 }
               },
               {
@@ -69,4 +69,7 @@ module "wafv2" {
     "Team": "Security Engineering"
     "Owner": "Donggyu Woo"
   }
+
+  enable_webacl_association = false
+  alb_resource_arn          = []
 }

@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.0 🌈 (09/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#30)
+
+## 🚀 Features
+
+- feat: Support WebACL association @woodonggyu (#33)
+
+---
+
 ## v1.1.2 🌈 (08/12/2021)
 ## Changes
 

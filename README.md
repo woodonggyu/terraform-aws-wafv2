@@ -17,6 +17,8 @@ Available features
 
 ## Examples
 
+* See [Example Codes](https://github.com/woodonggyu/terraform-aws-wafv2/tree/main/examples) for full details.
+
 ## Requirements
 
 | Name | Version |

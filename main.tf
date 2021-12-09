@@ -3053,3 +3053,12 @@ resource "aws_wafv2_web_acl" "this" {
 
   tags = var.tags
 }
+
+resource "aws_wafv2_web_acl_association" "this" {
+  count = var.enable_webacl_association ? length(var.alb_resource_arn) : 0
+
+  resource_arn = element(var.alb_resource_arn, count.index)
+  web_acl_arn  = aws_wafv2_web_acl.this.arn
+
+  depends_on = [aws_wafv2_web_acl.this]
+}

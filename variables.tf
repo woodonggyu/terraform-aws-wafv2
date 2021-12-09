@@ -54,3 +54,15 @@ variable "tags" {
   description = "A tag associated with an AWS resource."
   default     = null
 }
+
+variable "enable_webacl_association" {
+  type        = bool
+  description = "Whether to associate ALB with WAFv2 WebACL."
+  default     = false
+}
+
+variable "alb_resource_arn" {
+  type        = list(string)
+  description = "The Amazon Resource Name (ARN) of the resource to associate with the web ACL."
+  default     = []
+}

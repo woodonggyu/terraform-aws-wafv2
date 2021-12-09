@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.0.0 🌈 (09/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#34)
+
+## 🚀 Features
+
+- feat: Support logging configuration @woodonggyu (#35)
+
+## 📝 Documentation
+
+- docs: Add example code of 'LoggingConfiguration' @woodonggyu (#37)
+
+---
+
 ## v1.2.0 🌈 (09/12/2021)
 ## Changes
 

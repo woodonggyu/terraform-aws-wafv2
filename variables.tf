@@ -55,6 +55,46 @@ variable "tags" {
   default     = null
 }
 
+variable "enable_logging_configuration" {
+  type        = bool
+  description = "Whether to enable logging configuration"
+  default     = false
+}
+
+variable "log_destination_configs" {
+  type        = list(string)
+  description = "The Amazon Resource Names (ARNs) of the logging destinations that you want to associate with the web ACL."
+  default     = []
+}
+
+variable "redacted_fields" {
+  type        = object({
+    single_header = optional(map(string))
+    method        = optional(string)
+    query_string  = optional(string)
+    uri_path      = optional(string)
+  })
+
+  description = "The parts of the request that you want to keep out of the logs."
+  default     = null
+}
+
+variable "logging_filter" {
+  type        = object({
+    default_behavior  = string
+    filter            = list(object({
+      behavior      = string
+      condition     = list(object({
+        action_condition      = optional(map(string))
+        label_name_condition  = optional(map(string))
+      }))
+      requirement   = string
+    }))
+  })
+  description = "Filtering that specifies which web requests are kept in the logs and which are dropped."
+  default     = null
+}
+
 variable "enable_webacl_association" {
   type        = bool
   description = "Whether to associate ALB with WAFv2 WebACL."

@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.1.0 🌈 (10/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#38)
+
+## 🚀 Features
+
+- feat: Add WebACL ByteMatchStatement, LabelMatchStatement @woodonggyu (#40)
+
+---
+
 ## v2.0.0 🌈 (09/12/2021)
 ## Changes
 

@@ -4,6 +4,7 @@ Terraform sub-module which creates WAFv2 IP-sets resource on AWS.
 
 ## Examples
 
+See [Example Codes](https://github.com/woodonggyu/terraform-aws-wafv2/tree/main/examples/IP-sets) for full details.
 
 ## Requirements
 

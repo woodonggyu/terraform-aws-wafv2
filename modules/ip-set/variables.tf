@@ -4,19 +4,22 @@ variable "region" {
   default     = "ap-northeast-2"
 }
 
-variable "count_ip_set" {
+variable "ip_set" {
   type        = number
-  description = ""
+  description = "Count of IP set to create."
+  default     = null
 }
 
 variable "name" {
   type        = list(string)
-  description = "A friendly name of the IP set."
+  description = "The descriptive name of the IP set."
+  default     = null
 }
 
 variable "scope" {
   type        = string
   description = "Specifies whether this is for an AWS CloudFront distribution or for a regional application."
+  default     = null
 }
 
 variable "ip_address_version" {
@@ -27,12 +30,12 @@ variable "ip_address_version" {
 
 variable "addresses" {
   type        = list(string)
-  description = "Contains an array of strings that specify one or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation."
+  description = "The Filename to import IP sets. Specify one or more IP addresses  contains by CIDR notation."
   default     = null
 }
 
 variable "tags" {
   type        = map(string)
-  description = "A tag associated with an AWS resource."
+  description = "Key:value pairs associated with an AWS resource."
   default     = null
 }

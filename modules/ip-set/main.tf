@@ -1,7 +1,7 @@
 provider "aws" { region = var.region }
 
 resource "aws_wafv2_ip_set" "this" {
-  count              = var.count_ip_set
+  count = var.ip_set
 
   name               = var.name[count.index]
   scope              = var.scope

@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.2.0 🌈 (11/12/2021)
+## Changes
+
+- style: Reformat to standard style (using. fmt) @woodonggyu (#45)
+- Update CHANGELOG.md @github-actions (#41)
+
+## 🚀 Features
+
+- feat: Create IP sets @woodonggyu (#44)
+
+---
+
 ## v2.1.0 🌈 (10/12/2021)
 ## Changes
 

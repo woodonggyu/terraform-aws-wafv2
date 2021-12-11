@@ -68,7 +68,7 @@ variable "log_destination_configs" {
 }
 
 variable "redacted_fields" {
-  type        = object({
+  type = object({
     single_header = optional(map(string))
     method        = optional(string)
     query_string  = optional(string)
@@ -80,15 +80,15 @@ variable "redacted_fields" {
 }
 
 variable "logging_filter" {
-  type        = object({
-    default_behavior  = string
-    filter            = list(object({
-      behavior      = string
-      condition     = list(object({
-        action_condition      = optional(map(string))
-        label_name_condition  = optional(map(string))
+  type = object({
+    default_behavior = string
+    filter = list(object({
+      behavior = string
+      condition = list(object({
+        action_condition     = optional(map(string))
+        label_name_condition = optional(map(string))
       }))
-      requirement   = string
+      requirement = string
     }))
   })
   description = "Filtering that specifies which web requests are kept in the logs and which are dropped."

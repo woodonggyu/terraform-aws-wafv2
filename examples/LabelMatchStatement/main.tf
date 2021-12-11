@@ -1,10 +1,16 @@
 provider "aws" { region = "ap-northeast-2" }
 
 module "wafv2" {
-  source  = "../.."
+  source = "../.."
 
-  name    = "WebACL01"
-  scope   = "REGIONAL"
+  enable_logging_configuration = false
+  log_destination_configs      = []
+
+  enable_webacl_association = false
+  alb_resource_arn          = []
+
+  name  = "WebACL01"
+  scope = "REGIONAL"
 
   rules = [
     {
@@ -30,14 +36,8 @@ module "wafv2" {
   }
 
   tags = {
-    "Name": "PROD.WAFv2"
-    "Team": "Security Engineering"
-    "Owner": "Donggyu Woo"
+    "Name" : "PROD.WAFv2"
+    "Team" : "Security Engineering"
+    "Owner" : "Donggyu Woo"
   }
-
-  enable_logging_configuration  = false
-  log_destination_configs       = []
-
-  enable_webacl_association = false
-  alb_resource_arn          = []
 }

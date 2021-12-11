@@ -2,26 +2,66 @@ provider "aws" { region = "ap-northeast-2" }
 
 module "wafv2" {
   source  = "woodonggyu/wafv2/aws"
-  version = "2.0.0"
+  version = "2.1.0"
 
-  name    = "WebACL01"
-  scope   = "REGIONAL"
+  name  = "WebACL01"
+  scope = "REGIONAL"
+
+  enable_webacl_association = false
+  alb_resource_arn          = []
+
+  enable_logging_configuration = true
+  log_destination_configs      = []
+
+  redacted_fields = {
+    single_header = {
+      name = "user-agent"
+    }
+  }
+
+  logging_filter = {
+    default_behavior = "KEEP"
+    filter = [
+      {
+        behavior    = "KEEP"
+        requirement = "MEETS_ANY"
+        condition = [
+          {
+            action_condition = {
+              action = "ALLOW"
+            }
+          }
+        ]
+      },
+      {
+        behavior    = "DROP"
+        requirement = "MEETS_ALL"
+        condition = [
+          {
+            action_condition = {
+              action = "COUNT"
+            }
+          }
+        ]
+      }
+    ]
+  }
 
   rules = [
     {
-      name                          = "ManagedRuleGroup01"
-      priority                      = 20
-      override_action               = "count"
+      name            = "ManagedRuleGroup01"
+      priority        = 20
+      override_action = "count"
       visibility_config = {
         cloudwatch_metrics_enabled = false
         metric_name                = "cloudwatch_wafv2_metrics"
         sampled_requests_enabled   = false
       }
-      managed_rule_group_statement  = {
-        name                  = "AWSManagedRulesCommonRuleSet"
-        vendor_name           = "AWS"
-        excluded_rule         = ["NoUserAgent_HEADER"]
-        scope_down_statement  = {
+      managed_rule_group_statement = {
+        name          = "AWSManagedRulesCommonRuleSet"
+        vendor_name   = "AWS"
+        excluded_rule = ["NoUserAgent_HEADER"]
+        scope_down_statement = {
           and_statement = {
             statements = [
               {
@@ -35,8 +75,8 @@ module "wafv2" {
                     body = {}
                   }
                   text_transformation = {
-                    priority  = 11
-                    type      = "NONE"
+                    priority = 11
+                    type     = "NONE"
                   }
                 }
               }
@@ -46,9 +86,9 @@ module "wafv2" {
       }
     },
     {
-      name      = "WebACL01"
-      priority  = 10
-      action    = "block"
+      name     = "WebACL01"
+      priority = 10
+      action   = "block"
       geo_match_statement = {
         country_codes = ["BD"]
       }
@@ -67,48 +107,8 @@ module "wafv2" {
   }
 
   tags = {
-    "Name": "PROD.WAFv2"
-    "Team": "Security Engineering"
-    "Owner": "Donggyu Woo"
+    "Name" : "PROD.WAFv2"
+    "Team" : "Security Engineering"
+    "Owner" : "Donggyu Woo"
   }
-
-  enable_logging_configuration  = true
-  log_destination_configs       = []
-
-  redacted_fields = {
-    single_header = {
-      name = "user-agent"
-    }
-  }
-
-  logging_filter = {
-    default_behavior = "KEEP"
-    filter = [
-      {
-        behavior    = "KEEP"
-        requirement = "MEETS_ANY"
-        condition   = [
-          {
-            action_condition = {
-              action = "ALLOW"
-            }
-          }
-        ]
-      },
-      {
-        behavior    = "DROP"
-        requirement = "MEETS_ALL"
-        condition   = [
-          {
-            action_condition = {
-              action = "COUNT"
-            }
-          }
-        ]
-      }
-    ]
-  }
-
-  enable_webacl_association     = false
-  alb_resource_arn              = []
 }

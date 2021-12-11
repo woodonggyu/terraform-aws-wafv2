@@ -4,8 +4,14 @@ module "wafv2" {
   source  = "woodonggyu/wafv2/aws"
   version = "2.0.0"
 
-  name    = "WebACL01"
-  scope   = "REGIONAL"
+  enable_logging_configuration = false
+  log_destination_configs      = []
+
+  enable_webacl_association = false
+  alb_resource_arn          = []
+
+  name  = "WebACL01"
+  scope = "REGIONAL"
 
   rules = [
     {
@@ -14,11 +20,11 @@ module "wafv2" {
       action   = "count"
       sqli_match_statement = {
         field_to_match = {
-          uri_path  = {}
+          uri_path = {}
         }
         text_transformation = {
-          priority  = 10
-          type      = "NONE"
+          priority = 10
+          type     = "NONE"
         }
 
       }
@@ -37,14 +43,8 @@ module "wafv2" {
   }
 
   tags = {
-    "Name": "PROD.WAFv2"
-    "Team": "Security Engineering"
-    "Owner": "Donggyu Woo"
+    "Name" : "PROD.WAFv2"
+    "Team" : "Security Engineering"
+    "Owner" : "Donggyu Woo"
   }
-
-  enable_logging_configuration  = false
-  log_destination_configs       = []
-
-  enable_webacl_association = false
-  alb_resource_arn          = []
 }

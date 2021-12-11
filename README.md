@@ -4,10 +4,11 @@ Terraform module which creates Web Application Firewall (WAFV2).
 
 Available features
 
-- Support AWS managed rule groups
-- Support various rule statement (IP Sets, Geo Match, Byte Match, Label Match, Rate Based, Size Constraint, Logical Statements)
-- Associate WAFv2 WebACL with AWS resources (API Gateway, ALB, AWS AppSync)
-- Enable Logging Configuration
+- AWS Managed Rule Groups
+- Various Rule Statement (IP Sets, Geo Match, Byte Match, Label Match, Rate Based, Size Constraint, Logical Statements)
+- Associating WAFv2 WebACL with AWS resources (API Gateway, ALB, AWS AppSync)
+- Enabling Logging Configuration
+- Create IP sets
 
 ## Examples
 
@@ -28,7 +29,7 @@ Available features
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 

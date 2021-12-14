@@ -1,7 +1,8 @@
 provider "aws" { region = "ap-northeast-2" }
 
 module "wafv2" {
-  source = "../.."
+  source  = "woodonggyu/wafv2/aws"
+  version = "2.2.0"
 
   enable_logging_configuration = false
   log_destination_configs      = []

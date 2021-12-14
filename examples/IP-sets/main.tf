@@ -9,9 +9,9 @@ locals {
 }
 
 module "ip-set" {
-  source = "../../modules/ip-set"
+  source = "woodonggyu/wafv2/aws//modules/ip-set"
 
-  count_ip_set       = 2
+  ip_set             = 2
   name               = ["IPSetRule01", "IPSetRule02"]
   scope              = "REGIONAL"
   addresses          = ["blacklist.txt", "whitelist.txt"]
@@ -22,7 +22,7 @@ module "ip-set" {
 
 module "wafv2" {
   source  = "woodonggyu/wafv2/aws"
-  version = "2.1.0"
+  version = "2.2.0"
 
   enable_webacl_association = false
   alb_resource_arn          = []

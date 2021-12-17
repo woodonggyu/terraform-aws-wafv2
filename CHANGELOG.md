@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.3.0 🌈 (17/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#46)
+
+## 🚀 Features
+
+- feat: Add WebACL RegexPatternSetReferenceStatement @woodonggyu (#49)
+
+---
+
 ## v2.2.0 🌈 (11/12/2021)
 ## Changes
 

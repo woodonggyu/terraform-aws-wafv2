@@ -1,7 +1,8 @@
 provider "aws" { region = "ap-northeast-2" }
 
 module "regex-pattern-set" {
-  source = "../../modules/regex-pattern-set"
+  source  = "woodonggyu/wafv2/aws//modules/regex-pattern-set"
+  version = "2.3.0"
 
   name          = ["regex01", "regex02"]
   scope         = "REGIONAL"
@@ -9,7 +10,8 @@ module "regex-pattern-set" {
 }
 
 module "wafv2" {
-  source  = "../.."
+  source  = "woodonggyu/wafv2/aws"
+  version = "2.3.0"
 
   enable_logging_configuration = false
   log_destination_configs      = []

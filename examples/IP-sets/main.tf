@@ -10,7 +10,7 @@ locals {
 
 module "ip-set" {
   source  = "woodonggyu/wafv2/aws//modules/ip-set"
-  version = "2.2.0"
+  version = "2.3.0"
 
   count_ip_set       = 2
   name               = ["IPSetRule01", "IPSetRule02"]
@@ -23,7 +23,7 @@ module "ip-set" {
 
 module "wafv2" {
   source  = "woodonggyu/wafv2/aws"
-  version = "2.2.0"
+  version = "2.3.0"
 
   enable_webacl_association = false
   alb_resource_arn          = []

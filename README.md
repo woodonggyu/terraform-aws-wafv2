@@ -13,6 +13,7 @@ Available features
   - RateBasedStatement
   - SizeConstraintStatement
   - Logical Statement (And, Or, Not)
+  - RegexPatternSetReferenceStatement
 - Associating WAFv2 WebACL with AWS resources (API Gateway, ALB, AWS AppSync)
 - Enabling Logging Configuration
 - Create IP sets

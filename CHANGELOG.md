@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.3.1 🌈 (17/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#50)
+
+## 📌 Dependencies
+
+- Bump module version from 2.2.0 to 2.3.0 @woodonggyu (#52)
+
+---
+
 ## v2.3.0 🌈 (17/12/2021)
 ## Changes
 

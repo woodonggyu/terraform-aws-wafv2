@@ -36,8 +36,11 @@ Available features
 | aws | \>= 3.60.0 |
 
 ## Modules
+| Name | Type |
+|------|------|
+| [aws_wafv2_ip_set.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_ip_set) | resource |
+| [aws_wafv2_regex_pattern_set.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafv2_regex_pattern_set) | resource |
 
-No modules.
 
 ## Resources
 

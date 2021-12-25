@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.3.2 🌈 (25/12/2021)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#53)
+
+## 📝 Documentation
+
+- Update README.md @woodonggyu (#55)
+
+---
+
 ## v2.3.1 🌈 (17/12/2021)
 ## Changes
 

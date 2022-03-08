@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.3.3 🌈 (08/03/2022)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#56)
+
+## 🐛 Bug Fixes
+
+- fix: An error occurred due to incorrect variable @woodonggyu (#60)
+
+---
+
 ## v2.3.2 🌈 (25/12/2021)
 ## Changes
 

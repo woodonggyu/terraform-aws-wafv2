@@ -12,7 +12,7 @@ module "ip-set" {
   source  = "woodonggyu/wafv2/aws//modules/ip-set"
   version = "2.3.0"
 
-  count_ip_set       = 2
+  ip_set             = 2
   name               = ["IPSetRule01", "IPSetRule02"]
   scope              = "REGIONAL"
   addresses          = ["blacklist.txt", "whitelist.txt"]

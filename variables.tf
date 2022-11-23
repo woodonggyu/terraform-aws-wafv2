@@ -69,10 +69,10 @@ variable "log_destination_configs" {
 
 variable "redacted_fields" {
   type = object({
-    single_header = optional(map(string))
-    method        = optional(string)
-    query_string  = optional(string)
-    uri_path      = optional(string)
+    single_header = map(string)
+    method        = string
+    query_string  = string
+    uri_path      = string
   })
 
   description = "The parts of the request that you want to keep out of the logs."
@@ -85,8 +85,8 @@ variable "logging_filter" {
     filter = list(object({
       behavior = string
       condition = list(object({
-        action_condition     = optional(map(string))
-        label_name_condition = optional(map(string))
+        action_condition     = map(string)
+        label_name_condition = map(string)
       }))
       requirement = string
     }))

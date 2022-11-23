@@ -1,5 +1,36 @@
 # Changelog
 
+## v2.4.2 🌈 (23/11/2022)
+## Changes
+
+* No changes
+
+---
+
+## v2.4.1 🌈 (23/11/2022)
+## Changes
+
+* No changes
+
+---
+
+## v2.4.0 🌈 (23/11/2022)
+## Changes
+
+- Update CHANGELOG.md @github-actions (#61)
+
+## 📌 Dependencies
+
+- build(deps): Bump peter-evans/create-pull-request from 4.1.1 to 4.1.3 @dependabot (#68)
+- build(deps): Bump peter-evans/create-pull-request from 4.0.4 to 4.1.1 @dependabot (#67)
+- build(deps): Bump peter-evans/create-pull-request from 4.0.3 to 4.0.4 @dependabot (#66)
+- build(deps): Bump peter-evans/create-pull-request from 4.0.2 to 4.0.3 @dependabot (#65)
+- build(deps): Bump peter-evans/create-pull-request from 4.0.1 to 4.0.2 @dependabot (#64)
+- build(deps): Bump actions/checkout from 2 to 3 @dependabot (#63)
+- build(deps): Bump peter-evans/create-pull-request from 3 to 4.0.1 @dependabot (#62)
+
+---
+
 ## v2.3.3 🌈 (08/03/2022)
 ## Changes
 

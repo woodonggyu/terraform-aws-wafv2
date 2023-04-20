@@ -38,6 +38,11 @@ resource "aws_wafv2_web_acl" "this" {
             for_each = lower(action.value) == "count" ? [1] : []
             content {}
           }
+
+          dynamic "captcha" {
+            for_each = lower(action.value) == "captcha" ? [1] : []
+            content {}
+          }
         }
       }
 
